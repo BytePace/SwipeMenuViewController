@@ -46,8 +46,6 @@ final class TabItemView: UIView {
 
     override public func layoutSubviews() {
         super.layoutSubviews()
-
-        updateXConstraintForDot()
     }
 
     private func setupLabel() {
@@ -77,7 +75,7 @@ final class TabItemView: UIView {
     
     private func layoutDot() {
         dotView.translatesAutoresizingMaskIntoConstraints = false
-        dotTrailingConstraint = dotView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        dotTrailingConstraint = dotView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
 
         NSLayoutConstraint.activate([
             dotTrailingConstraint,
@@ -85,12 +83,5 @@ final class TabItemView: UIView {
             dotView.widthAnchor.constraint(equalToConstant: 8.0),
             dotView.heightAnchor.constraint(equalToConstant: 8.0)
             ])
-    }
-    
-    private func updateXConstraintForDot() {
-        let w = titleLabel.sizeThatFits(self.frame.size).width
-        let c = ((self.frame.width - w) / 2 - 8)
-        let constant = max(c, 0)
-        dotTrailingConstraint.constant = -constant
     }
 }
