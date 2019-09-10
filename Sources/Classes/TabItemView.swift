@@ -12,7 +12,6 @@ final class TabItemView: UIView {
         dot.isHidden = true
         return dot
     }()
-    private var dotTrailingConstraint: NSLayoutConstraint!
     
     var dotHidden = true {
         didSet {
@@ -54,18 +53,18 @@ final class TabItemView: UIView {
         titleLabel.font = UIFont.boldSystemFont(ofSize: 14)
         titleLabel.textColor = UIColor(red: 140/255, green: 140/255, blue: 140/255, alpha: 1.0)
         titleLabel.backgroundColor = UIColor.clear
-        titleLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .horizontal)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLabel)
         layoutLabel()
     }
     
     private func setupDotView() {
+        dotView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(dotView)
         layoutDot()
     }
     
     private func layoutLabel() {
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
             titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
@@ -74,11 +73,8 @@ final class TabItemView: UIView {
     }
     
     private func layoutDot() {
-        dotView.translatesAutoresizingMaskIntoConstraints = false
-        dotTrailingConstraint = dotView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
-
         NSLayoutConstraint.activate([
-            dotTrailingConstraint,
+            dotView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             dotView.topAnchor.constraint(equalTo: topAnchor),
             dotView.widthAnchor.constraint(equalToConstant: 8.0),
             dotView.heightAnchor.constraint(equalToConstant: 8.0)
