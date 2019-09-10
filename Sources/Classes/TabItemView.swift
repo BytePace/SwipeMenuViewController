@@ -56,6 +56,7 @@ final class TabItemView: UIView {
         titleLabel.font = UIFont.boldSystemFont(ofSize: 14)
         titleLabel.textColor = UIColor(red: 140/255, green: 140/255, blue: 140/255, alpha: 1.0)
         titleLabel.backgroundColor = UIColor.clear
+        titleLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .horizontal)
         addSubview(titleLabel)
         layoutLabel()
     }
