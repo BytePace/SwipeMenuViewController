@@ -1,6 +1,6 @@
 import UIKit
 
-final class TabItemView: UIView {
+public final class TabItemView: UIView {
     
     private(set) var titleLabel: UILabel = UILabel()
     private(set) var dotView: UIView = {
