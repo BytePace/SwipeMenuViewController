@@ -80,7 +80,7 @@ final class TabItemView: UIView {
 
         NSLayoutConstraint.activate([
             dotTrailingConstraint,
-            dotView.topAnchor.constraint(equalTo: topAnchor),
+            dotView.topAnchor.constraint(equalTo: topAnchor, constant: 6.0),
             dotView.widthAnchor.constraint(equalToConstant: 8.0),
             dotView.heightAnchor.constraint(equalToConstant: 8.0)
             ])
